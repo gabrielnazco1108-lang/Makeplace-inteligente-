@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Vendedor - IA Generator</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8fafc; }
+        header { background: #0f172a; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        textarea, input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+        button { background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .alert { background: #d1fae5; color: #065f46; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        .product-card { border: 1px solid #e2e8f0; padding: 15px; margin-top: 15px; border-radius: 6px; background: #f1f5f9; }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>👨‍💼 Panel del Vendedor (vendedor@test.com)</h2>
+        <a href="/logout" style="color: #f87171; text-decoration: none; font-weight: bold;">Cerrar Sesión</a>
+    </header>
+    <div class="container">
+        <h3>🚀 Carga un producto con Inteligencia Artificial (Gemini)</h3>
+        {% if exito %}<div class="alert">{{ exito }}</div>{% endif %}
+        <form method="POST">
+            <label>Introduce palabras clave separadas por comas:</label>
+            <textarea name="keywords" rows="3" placeholder="Ejemplo: zapatos, cuero, negros, formales, vestir" required></textarea>
+            <label>Precio ($):</label>
+            <input type="number" name="precio" step="0.01" placeholder="65.00" required>
+            <button type="submit">Generar Título y Descripción con IA</button>
+        </form>
+
+        <h3 style="margin-top: 40px;">📦 Inventario Actual en el Catálogo</h3>
+        {% for p in productos %}
+            <div class="product-card">
+                <h4>{{ p.titulo }} - <span style="color: #10b981;">${{ p.precio }}</span></h4>
+                <p>{{ p.descripcion }}</p>
+                <small style="color: #64748b;">Tags: {{ p.tags }}</small>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
