@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketplace Inteligente - Login</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { background: #1e293b; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; width: 350px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: 1px solid #475569; background: #334155; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #38bdf8; border: none; color: #0f172a; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #0ea5e9; }
+        .error { color: #f87171; margin-bottom: 10px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>🛡️ UNITEC Marketplace</h2>
+        <p>Inicia sesión con tus usuarios de prueba</p>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        <form method="POST">
+            <input type="email" name="correo" placeholder="vendedor@test.com / comprador@test.com" required>
+            <input type="password" name="password" placeholder="Contraseña (123)" required>
+            <button type="submit">Ingresar al Sistema</button>
+        </form>
+    </div>
+</body>
+</html>
